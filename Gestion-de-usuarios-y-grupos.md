@@ -1,7 +1,6 @@
 # Gestión de usuarios, grupos y permisos en GNU/Linux
 
-## Índice de contenido
-### Introducción
+## Introducción
 - Linux es un sistema multiusuario por lo que puede tener varios usuarios
 trabajando en el sistema al mismo tiempo.
 - Los usuarios deben pertenecer como mínimo a un grupo, pudiendo
@@ -22,7 +21,7 @@ grupo)
 
 ---
 
-### Tipos de usuarios
+## Tipos de usuarios
 
 En Linux podemos distinguir 3 tipos de usuarios:
 - `Usuario Root`
@@ -43,37 +42,35 @@ En Linux podemos distinguir 3 tipos de usuarios:
     - Al instalar el sistema operativo se crea un usuario por defecto durante el proceso de instalación.
     - Si en el sistema sólo hay un usuario normal podemos configurarlo para que no pida su usuario y contraseña y que entre directamente como este usuario.
 
-### Ficheros de configuración de usuarios y grupos
+##  Ficheros de configuración de usuarios y grupos
 - Ficheros que el sistema lee o modifica al gestionar usuarios o grupos
 - Los más importantes son:
 
-    #### `/etc/passwd`
-    - Cada una de las líneas de este fichero de texto representa la información de un usuario.
-    - La información se organiza en campos separados por el carácter “:”.
-    - Los campos de cada línea son:
-    - `<nombre_usuario>:x:<UID>:<GID>:<información_usuario>:<directorio_personal>:<shell_de_inicio>`
-    - Ejemplo: `profesor:x:1000:1000:profesor,,,:/home/profesor:/bin/bash`
+    - `/etc/passwd`
+        - Cada una de las líneas de este fichero de texto representa la información de un usuario.
+        - La información se organiza en campos separados por el carácter “:”.
+        - Los campos de cada línea son:
+        - `<nombre_usuario>:x:<UID>:<GID>:<información_usuario>:<directorio_personal>:<shell_de_inicio>`
+        - Ejemplo: `profesor:x:1000:1000:profesor,,,:/home/profesor:/bin/bash`
 
-    #### `/etc/shadow`
-    - Almacena las contraseñas encriptadas de cada usuario.
-    - Sólo se puede acceder a este fichero como root o con privilegios de administrador (sudo).
-    - En versiones antiguas de Linux, la contraseña del usuario se guardaba en el fichero /etc/passwd en lugar de la “x”, pero en versiones más recientes las contraseñas se almacenan en este fichero con diferentes tipos de encriptación:
-    - **MD5**: $1$ Sin encriptación
-    - **SHA256**: $5$ 256 bits
-    - **SHA512**: $6$ 512 bits
-    - Los campos almacenados en este fichero son:
-    - `<nombre_usuario>:<contraseña_encriptada>:<numero_dias_sin_cambiar_clave>:...`
+    - `/etc/shadow`
+        - Almacena las contraseñas encriptadas de cada usuario.
+        - Sólo se puede acceder a este fichero como root o con privilegios de administrador (sudo).
+        - En versiones antiguas de Linux, la contraseña del usuario se guardaba en el fichero /etc/passwd en lugar de la “x”, pero en versiones más recientes las contraseñas se almacenan en este fichero con diferentes tipos de encriptación:
+        - **MD5**: $1$ Sin encriptación
+        - **SHA256**: $5$ 256 bits
+        - **SHA512**: $6$ 512 bits
+        - Los campos almacenados en este fichero son:
+        - `<nombre_usuario>:<contraseña_encriptada>:<numero_dias_sin_cambiar_clave>:...`
 
-    #### `/etc/group`
-    - En este fichero se encuentran los grupos de usuarios definidos en el sistema.
-    - Cada línea contiene la siguiente información:
-    - `<nombre_grupo>:<contraseña_grupo_x=notiene>:<GID>:<lista_usuarios_separados_por_comas>`
-
-<br>
+    - `/etc/group`
+        - En este fichero se encuentran los grupos de usuarios definidos en el sistema.
+        - Cada línea contiene la siguiente información:
+        - `<nombre_grupo>:<contraseña_grupo_x=notiene>:<GID>:<lista_usuarios_separados_por_comas>`
 
 ---
 
-### Otros ficheros importantes en la gestión de usuarios y grupos
+- Otros ficheros importantes en la gestión de usuarios y grupos
 
 | Fichero                  | Función                                                                 |
 |--------------------------|-------------------------------------------------------------------------|
@@ -85,24 +82,21 @@ En Linux podemos distinguir 3 tipos de usuarios:
 
 ---
 
-### Gestión de usuarios y grupos en modo gráfico
+## Gestión de usuarios y grupos en modo gráfico
 
-#### Para gestionar usuarios y grupos en modo gráfico en Ubuntu:
+- Para gestionar usuarios y grupos en modo gráfico en Ubuntu:
+    - Aplicaciones → Herramientas del Sistema → Configuración del Sistema → Cuentas de Usuario
+    - Aplicaciones → Herramientas del Sistema → Administración → Usuarios y Grupos
 
-- Aplicaciones → Herramientas del Sistema → Configuración del Sistema → Cuentas de Usuario
-
-- Aplicaciones → Herramientas del Sistema → Administración → Usuarios y Grupos
-
-
-    ![Gestion usuarios](img/gestionuser.png)
+        ![Gestion usuarios](img/gestionuser.png)
 
 - Desde esta aplicación podemos crear nuevos usuarios,eliminarlos y gestionar los grupos, creándolos, eliminándolos e incluyendo usuarios nuevos en los grupos ya existentes.
 
 ---
 
-### Gestión de grupos y usuarios en modo texto
+## Gestión de grupos y usuarios en modo texto
 
-#### Comandos útiles
+### Comandos útiles
 - `Comando Sudo`
     - Permite ejecutar comandos como si fuéramos el superusuario o ROOT.
     - Para utilizarlo es necesario que el usuario deba estar configurado con privilegios de root o administrador, para ello debe pertenecer al grupo “sudo”, o configurarlo en el fichero /etc/sudoers.
@@ -124,7 +118,7 @@ En Linux podemos distinguir 3 tipos de usuarios:
 
 ---
 
-#### Comandos para la gestión de usuarios y grupos
+### Comandos para la gestión de usuarios y grupos
 
 - Hay que tener en cuenta que sólo el administrador o un usuario con permisos de administrador puede añadir o modificar usuarios y grupos, por lo que es necesario el uso del comando sudo para realizar este tipo de operaciones.ç
 
@@ -268,7 +262,7 @@ En Linux podemos distinguir 3 tipos de usuarios:
 
 ---
 
-#### Comandos para la gestión de usuarios y grupos
+### Comandos para cambiar el propietario de ficheros y directorios
 
 - En GNU/Linux todos los ficheros y directorios pertenecen a un usuario(propietario/owner) y a un grupo al que tiene que pertenecer dicho usuario.
 -  GNU/Linux nos permite modificar el propietario y el grupo de los ficheros.
@@ -296,7 +290,7 @@ En Linux podemos distinguir 3 tipos de usuarios:
 
 ---
 
-#### Cambiar los permisos a ficheros y directorios
+### Cambiar los permisos a ficheros y directorios
 - Todos los archivos y directorios, como pertenecen a unos usuarios y grupos hacen necesario una política de permisos para manipularlos.
 -  GNU/Linux utiliza 3 grupos de permisos:
     - Los permisos del propietario del archivo (u)
@@ -311,14 +305,14 @@ En Linux podemos distinguir 3 tipos de usuarios:
 
 ---    
 
-### Permisos en modo gráfico
+#### Permisos en modo gráfico
 - Para ver o cambiar los permisos de un fichero en modo gráfico haremos click con el botón derecho sobre el archivo, entraremos en propiedades y después seleccionaremos la pestaña permisos.
 
     ![Permisos modo gráfico](img/permisos.png)
 
 ---
 
-### Permisos en modo texto
+#### Permisos en modo texto
 - Para comprobar los permisos de cualquier archivo en modo texto usaremos el comando ls -l
 
 - `Comando chmod`
