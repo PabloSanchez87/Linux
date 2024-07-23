@@ -10,6 +10,50 @@ El script será en Bash y asumirá que ya tienes ssh, git, y curl instalados.
 
 El script también requerirá que tengas una cuenta en GitHub y un repositorio creado.
 
+## Instrucciones para ejecutar el script
+1. Edita el script
+    - Asegúrate de cambiar las variables **EMAIL, GITHUB_USERNAME, y REPO_NAME** con tus propias credenciales y el **nombre de tu repositorio**.
+2. Haz el script ejecutable:
+    ```bash
+    chmod +x <nombre-script>.sh
+    ``` 
+3. Ejecutar el script:
+    ```bash
+    ./<nombre-script>.sh
+    ```
+
+- El script guiará a través de los pasos necesarios para:
+    - Configurar las claves SSH
+    - Añadir la clave pública a GitHub 
+    - Configurar Git con tus credenciales 
+    - Clonar un repositorio de GitHub
+    - Incluyendo la creación de un archivo de prueba y su sincronización.
+
+## Nota importante
+ - El **script requiere interacción manual para agregar la clave SSH a GitHub**, ya que GitHub no permite la automatización de este proceso por razones de seguridad. 
+ - Durante la ejecución, el script te mostrará la clave pública y te pedirá que la agregues manualmente a tu cuenta de GitHub siguiendo estos pasos: 
+    - Ve a [GitHub - SSH and GPG keys](https://github.com/settings/keys).
+    - Haz clic en **"New SSH key"**.
+    - Pega la **clave pública** que te proporciona el script y dale un nombre.
+    - Guarda la clave.
+- Una vez que la clave esté añadida, puedes continuar con la ejecución del script.
+
+## Borrado claves SSH (En caso de error o querer renovarlas)
+- Listar Claves SSH en el Agente
+  ```bash
+  ssh-add -l
+  ```
+
+- Eliminar claves SSH generadas
+  ```bash
+  rm ~/.ssh/id_rsa ~/.ssh/id_rsa.pub
+  ```
+
+- Limpiar el agente SSH completamente
+  ```bash
+  ssh-add -D
+  ```
+
 ## Script en bash
 ```bash
 #!/bin/bash
@@ -99,31 +143,3 @@ fi
 
 echo "Configuración y sincronización completadas."
 ```
-
-## Instrucciones para ejecutar el script
-1. Edita el script
-    - Asegúrate de cambiar las variables **EMAIL, GITHUB_USERNAME, y REPO_NAME** con tus propias credenciales y el **nombre de tu repositorio**.
-2. Haz el script ejecutable:
-    ```bash
-    chmod +x <nombre-script>.sh
-    ``` 
-3. Ejecutar el script:
-    ```bash
-    ./<nombre-script>.sh
-    ```
-
-- El script guiará a través de los pasos necesarios para:
-    - Configurar las claves SSH
-    - Añadir la clave pública a GitHub 
-    - Configurar Git con tus credenciales 
-    - Clonar un repositorio de GitHub
-    - Incluyendo la creación de un archivo de prueba y su sincronización.
-
-## Nota importante
- - El **script requiere interacción manual para agregar la clave SSH a GitHub**, ya que GitHub no permite la automatización de este proceso por razones de seguridad. 
- - Durante la ejecución, el script te mostrará la clave pública y te pedirá que la agregues manualmente a tu cuenta de GitHub siguiendo estos pasos: 
-    - Ve a [GitHub - SSH and GPG keys](https://github.com/settings/keys).
-    - Haz clic en **"New SSH key"**.
-    - Pega la **clave pública** que te proporciona el script y dale un nombre.
-    - Guarda la clave.
-- Una vez que la clave esté añadida, puedes continuar con la ejecución del script.
