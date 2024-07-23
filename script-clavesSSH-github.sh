@@ -43,14 +43,7 @@ fi
 
 # Configurar Git con las credenciales del usuario
 echo "Configurando Git..."
-if ! git config --global user.name "$GITHUB_USERNAME"; then
-  echo "Error: Fallo al configurar el nombre de usuario en Git."
-  exit 1
-fi
-
-if ! git config --global user.email "$EMAIL"; then
-  echo "Error: Fallo al configurar el correo electrónico en Git."
-  exit 1
-fi
+git config --global user.name "$GITHUB_USERNAME"
+git config --global user.email "$EMAIL"
 
 echo "Configuración y sincronización completadas."
