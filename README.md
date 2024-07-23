@@ -20,7 +20,7 @@ Este repositorio contiene una serie de archivos y scripts relacionados con la ad
     - Expliación Script para la generación de claves SSH y la configuración de la conexión con GitHub.
 - [script-clavesSSH-git-clone-generic.sh](./script-clavesSSH-github.sh)
     - Script para las claves SSH para la conexión remata con GitHub.
-- [Explicación script-clavesSSH-git-clone-generic.sh](./script-ssh-git-github.md)
+- [Explicación script-clavesSSH-git-clone-generic.sh](./script-clavesSSH-git-clone-generic.md)
     - Expliación Script para la generación de claves SSH y la configuración de la conexión con GitHub.
 - [script-clavesSSH-git-clone-generic.sh](./script-clavesSSH-git-clone-generic.sh)
     - Script para la configuración de Git y la sincronización con GitHub.
