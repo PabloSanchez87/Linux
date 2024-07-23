@@ -49,11 +49,22 @@ fi
 # Entrar en el directorio del repositorio
 cd $REPO_NAME
 
-# Crear un archivo de prueba
-echo "Creando un archivo de prueba..."
-echo "# $REPO_NAME" >> README.md
-git add README.md
-git commit -m "Añadir archivo README.md"
-git push origin main
+# Verificar si README.md ya existe
+if [ -e README.md ]; then
+  echo "El archivo README.md ya existe."
+  # Crear un archivo de prueba
+  echo "Creando un archivo de prueba..."
+  echo "# $REPO_NAME" >> prueba.md
+  git add prueba.md
+  git commit -m "Añadir archivo prueba.md"
+  git push origin main
+else
+  # Crear un archivo de prueba README
+  echo "Creando un archivo de prueba..."
+  echo "# $REPO_NAME" >> README.md
+  git add README.md
+  git commit -m "Añadir archivo README.md"
+  git push origin main
+fi
 
 echo "Configuración y sincronización completadas."
