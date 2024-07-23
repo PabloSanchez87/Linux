@@ -23,6 +23,15 @@ echo "Por favor, añade la clave pública anterior a tu cuenta de GitHub."
 echo "Ve a https://github.com/settings/keys y añade una nueva clave SSH."
 read -p "Presiona [Enter] una vez que hayas añadido la clave a GitHub..."
 
+# Verificar la clave SSH
+echo "Verificando la clave SSH..."
+ssh -T git@github.com
+
+if [ $? -ne 1 ]; then
+  echo "Error: La clave SSH no está configurada correctamente."
+  exit 1
+fi
+
 # Configurar Git con las credenciales del usuario
 echo "Configurando Git..."
 git config --global user.name "$GITHUB_USERNAME"
@@ -31,6 +40,11 @@ git config --global user.email "$EMAIL"
 # Clonar el repositorio de GitHub
 echo "Clonando el repositorio de GitHub..."
 git clone git@github.com:$GITHUB_USERNAME/$REPO_NAME.git
+
+if [ $? -ne 0 ]; then
+  echo "Error: No se pudo clonar el repositorio. Verifica los permisos de acceso."
+  exit 1
+fi
 
 # Entrar en el directorio del repositorio
 cd $REPO_NAME
