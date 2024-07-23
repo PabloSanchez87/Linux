@@ -37,6 +37,15 @@ echo "Por favor, añade la clave pública anterior a tu cuenta de GitHub."
 echo "Ve a https://github.com/settings/keys y añade una nueva clave SSH."
 read -p "Presiona [Enter] una vez que hayas añadido la clave a GitHub..."
 
+# Verificar la clave SSH
+echo "Verificando la clave SSH..."
+ssh -T git@github.com
+
+if [ $? -ne 1 ]; then
+  echo "Error: La clave SSH no está configurada correctamente."
+  exit 1
+fi
+
 # Configurar Git con las credenciales del usuario
 echo "Configurando Git..."
 git config --global user.name "$GITHUB_USERNAME"
@@ -46,15 +55,31 @@ git config --global user.email "$EMAIL"
 echo "Clonando el repositorio de GitHub..."
 git clone git@github.com:$GITHUB_USERNAME/$REPO_NAME.git
 
+if [ $? -ne 0 ]; then
+  echo "Error: No se pudo clonar el repositorio. Verifica los permisos de acceso."
+  exit 1
+fi
+
 # Entrar en el directorio del repositorio
 cd $REPO_NAME
 
-# Crear un archivo de prueba
-echo "Creando un archivo de prueba..."
-echo "# $REPO_NAME" >> README.md
-git add README.md
-git commit -m "Añadir archivo README.md"
-git push origin main
+# Verificar si README.md ya existe
+if [ -e README.md ]; then
+  echo "El archivo README.md ya existe."
+  # Crear un archivo de prueba
+  echo "Creando un archivo de prueba..."
+  echo "# $REPO_NAME" >> prueba.md
+  git add prueba.md
+  git commit -m "Añadir archivo prueba.md"
+  git push origin main
+else
+  # Crear un archivo de prueba README
+  echo "Creando un archivo de prueba..."
+  echo "# $REPO_NAME" >> README.md
+  git add README.md
+  git commit -m "Añadir archivo README.md"
+  git push origin main
+fi
 
 echo "Configuración y sincronización completadas."
 ```
@@ -64,11 +89,11 @@ echo "Configuración y sincronización completadas."
     - Asegúrate de cambiar las variables **EMAIL, GITHUB_USERNAME, y REPO_NAME** con tus propias credenciales y el **nombre de tu repositorio**.
 2. Haz el script ejecutable:
     ```bash
-    chmod +x setup_git_github.sh
+    chmod +x <nombre-script>.sh
     ``` 
 3. Ejecutar el script:
     ```bash
-    ./setup_git_github.sh
+    ./<nombre-script>.sh
     ```
 
 - El script guiará a través de los pasos necesarios para:

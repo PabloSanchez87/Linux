@@ -16,10 +16,11 @@ Este repositorio contiene una serie de archivos y scripts relacionados con la ad
     - Explicación de la criptografía asimétrica y el uso de claves pública-privada.
 - [Shell-script y Cron](./Shell-script_y_Cron.md)
     - Uso de scripts de shell y cron para la automatización de tareas.
-- [Explicación script-git-generic.sh](./script-ssh-git-github.md)
+- [Explicación script-clavesSSH-git-clone-generic.sh](./script-ssh-git-github.md)
     - Expliación Script para la generación de claves SSH y la configuración de la conexión con GitHub.
-- [script-git-generic.sh](./script-git-generic.sh)
+- [script-clavesSSH-git-clone-generic.sh](./script-git-generic.sh)
     - Script para la configuración de Git y la sincronización con GitHub.
+        - También hace un `git clone` del repositorio.
 
 ## Script
 
