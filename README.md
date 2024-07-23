@@ -40,3 +40,4 @@ Para usar estos scripts, sigue las instrucciones detalladas en los archivos corr
 
 Este repositorio es un recurso completo para administradores de sistemas y desarrolladores que buscan automatizar y asegurar sus entornos Linux. Si tienes alguna pregunta o necesitas asistencia, no dudes en crear un issue o contribuir con mejoras.
 
+# Linux
