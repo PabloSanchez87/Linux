@@ -36,8 +36,12 @@ read -p "Presiona [Enter] una vez que hayas añadido la clave a GitHub..."
 
 # Verificar la clave SSH
 echo "Verificando la clave SSH..."
-if ! ssh -T git@github.com; then
+SSH_OUTPUT=$(ssh -T git@github.com 2>&1)
+if [[ $SSH_OUTPUT == *"successfully authenticated"* ]]; then
+  echo "La clave SSH está configurada correctamente y la autenticación con GitHub fue exitosa."
+else
   echo "Error: La clave SSH no está configurada correctamente o la autenticación con GitHub falló."
+  echo "$SSH_OUTPUT"
   exit 1
 fi
 
