@@ -5,14 +5,26 @@ EMAIL="tu_email@example.com"
 GITHUB_USERNAME="tu_usuario_github"
 REPO_NAME="nombre_del_repositorio"
 
+# Comprobar si ya existen claves SSH
+if [ -f ~/.ssh/id_rsa ] || [ -f ~/.ssh/id_rsa.pub ]; then
+  echo "Ya existen claves SSH en ~/.ssh/id_rsa y ~/.ssh/id_rsa.pub. Aborta para evitar sobrescribir."
+  exit 1
+fi
+
 # Generar claves SSH
 echo "Generando claves SSH..."
-ssh-keygen -t rsa -b 4096 -C "$EMAIL" -f ~/.ssh/id_rsa -N ""
+if ! ssh-keygen -t rsa -b 4096 -C "$EMAIL" -f ~/.ssh/id_rsa -N ""; then
+  echo "Error: Fallo en la generación de claves SSH."
+  exit 1
+fi
 
 # Añadir clave SSH al agente
 echo "Añadiendo clave SSH al agente..."
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
+if ! ssh-add ~/.ssh/id_rsa; then
+  echo "Error: Fallo al añadir la clave SSH al agente."
+  exit 1
+fi
 
 # Copiar clave pública
 echo "Tu clave pública es:"
@@ -25,10 +37,14 @@ read -p "Presiona [Enter] una vez que hayas añadido la clave a GitHub..."
 
 # Verificar la clave SSH
 echo "Verificando la clave SSH..."
-ssh -T git@github.com
-
-if [ $? -ne 1 ]; then
-  echo "Error: La clave SSH no está configurada correctamente."
+# Ejecutar la conexión SSH y capturar la salida
+SSH_OUTPUT=$(ssh -T git@github.com 2>&1)
+# Verificar la salida para determinar si la autenticación fue exitosa
+if [[ $SSH_OUTPUT == *"successfully authenticated"* ]]; then
+  echo "La clave SSH está configurada correctamente y la autenticación con GitHub fue exitosa."
+else
+  echo "Error: La clave SSH no está configurada correctamente o la autenticación con GitHub falló."
+  echo "$SSH_OUTPUT"
   exit 1
 fi
 
