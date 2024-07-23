@@ -54,7 +54,7 @@ echo "Creando un archivo de prueba..."
 echo "# $REPO_NAME" >> README.md
 git add README.md
 git commit -m "Añadir archivo README.md"
-git push origin master
+git push origin main
 
 echo "Configuración y sincronización completadas."
 ```
@@ -77,3 +77,12 @@ echo "Configuración y sincronización completadas."
     - Configurar Git con tus credenciales 
     - Clonar un repositorio de GitHub
     - Incluyendo la creación de un archivo de prueba y su sincronización.
+
+## Nota importante
+ - El **script requiere interacción manual para agregar la clave SSH a GitHub**, ya que GitHub no permite la automatización de este proceso por razones de seguridad. 
+ - Durante la ejecución, el script te mostrará la clave pública y te pedirá que la agregues manualmente a tu cuenta de GitHub siguiendo estos pasos: 
+    - Ve a [GitHub - SSH and GPG keys](https://github.com/settings/keys).
+    - Haz clic en **"New SSH key"**.
+    - Pega la **clave pública** que te proporciona el script y dale un nombre.
+    - Guarda la clave.
+- Una vez que la clave esté añadida, puedes continuar con la ejecución del script.

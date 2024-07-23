@@ -40,6 +40,6 @@ echo "Creando un archivo de prueba..."
 echo "# $REPO_NAME" >> README.md
 git add README.md
 git commit -m "Añadir archivo README.md"
-git push origin master
+git push origin main
 
 echo "Configuración y sincronización completadas."
