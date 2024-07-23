@@ -36,7 +36,9 @@ read -p "Presiona [Enter] una vez que hayas añadido la clave a GitHub..."
 
 # Verificar la clave SSH
 echo "Verificando la clave SSH..."
+# Ejecutar la conexión SSH y capturar la salida
 SSH_OUTPUT=$(ssh -T git@github.com 2>&1)
+# Verificar la salida para determinar si la autenticación fue exitosa
 if [[ $SSH_OUTPUT == *"successfully authenticated"* ]]; then
   echo "La clave SSH está configurada correctamente y la autenticación con GitHub fue exitosa."
 else
@@ -50,4 +52,4 @@ echo "Configurando Git..."
 git config --global user.name "$GITHUB_USERNAME"
 git config --global user.email "$EMAIL"
 
-echo "Configuración y sincronización completadas."
+echo "Configuración completada."
