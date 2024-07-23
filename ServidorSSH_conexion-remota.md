@@ -138,3 +138,4 @@ cat ~/.ssh/id_rsa.pub | ssh usuario@servidor 'mkdir -p ~/.ssh && cat >> ~/.ssh/a
 ssh usuario@servidor
 ```
 
+
