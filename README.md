@@ -26,17 +26,6 @@ Este repositorio contiene una serie de archivos y scripts relacionados con la ad
     - Script para la configuración de Git y la sincronización con GitHub.
         - También hace un `git clone` del repositorio.
 
-## Script
-
-### script-git-generic.sh
-
-Este script configura Git y sincroniza un repositorio local con GitHub. Incluye los siguientes pasos:
-1. Generación de claves SSH.
-2. Configuración de la clave pública en GitHub.
-3. Configuración de Git con tus credenciales.
-4. Clonación de un repositorio de GitHub.
-5. Sincronización de cambios entre el repositorio local y GitHub.
-
 ## Cómo Usar
 
 Para usar estos scripts, sigue las instrucciones detalladas en los archivos correspondientes. Asegúrate de personalizar las variables y seguir los pasos indicados para una correcta configuración y sincronización.
