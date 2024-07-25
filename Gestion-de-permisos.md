@@ -11,9 +11,7 @@ usuario y a un grupo.
     - El grupo propietario del archivo será 'profesores'
     - Es decir, el archivo pertenecerá al usuario pepe y al grupo profesores. 
     - Obligatoriamente, todos los archivos del sistema pertenecen a algún usuario y a algún grupo. 
-- Con el `comando ls` añadiendo la opción `-l` (formato largo) podemos visualizar el usuario propietario y el grupo propietario del archivo, ejemplo:
-
-    ![Comando ls](img/ls.png)
+- Con el `comando ls` añadiendo la opción `-l` (formato largo) podemos visualizar el usuario propietario y el grupo propietario del archivo.
 
 ---
 
