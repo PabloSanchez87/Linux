@@ -26,6 +26,9 @@ Este repositorio contiene una serie de archivos y scripts relacionados con la ad
     - Script para la configuración de Git y la sincronización con GitHub.
         - También hace un `git clone` del repositorio.
 
+- [**EXTRA - Guía uso Git y Github**](https://github.com/PabloSanchez87/guia-git_github)
+    - Este repositorio contiene una serie de documentos que cubren aspectos fundamentales de Git y GitHub.
+
 ## Cómo Usar
 
 Para usar estos scripts, sigue las instrucciones detalladas en los archivos correspondientes. Asegúrate de personalizar las variables y seguir los pasos indicados para una correcta configuración y sincronización.
